@@ -8,16 +8,16 @@ casbin:
 jwt:
     signing-key: 'qmPlus'
 
-# mysql connect configuration
-mysql:
-    username: root
-    password: 'Aa@6447985'
-    path: '127.0.0.1:3306'
-    db-name: 'qmPlus'
-    config: 'charset=utf8&parseTime=True&loc=Local'
+# postgres connect configuration
+postgres:
+    username: postgres
+    password: 'qinmin@328'
+    path: '10.10.10.138:5432'
+    db-name: 'gin_vue_admin_postgres'
+    config: 'sslmode=disable'
     max-idle-conns: 10
     max-open-conns: 10
-    log-mode: false
+    log-mode: true
 
 #sqlite 配置
 sqlite:
@@ -33,7 +33,7 @@ qiniu:
     img-path: 'http://qmplusimg.henrongyi.top'
 # redis configuration
 redis:
-    addr: '127.0.0.1:6379'
+    addr: '10.10.10.138:6379'
     password: ''
     db: 0
 
@@ -42,7 +42,7 @@ system:
     use-multipoint: false
     env: 'public'  # Change to "develop" to skip authentication for development mode
     addr: 8888
-    db-type: "mysql"  # support mysql/sqlite
+    db-type: "postgres"  # support postgres/sqlite
 
 # captcha configuration
 captcha:

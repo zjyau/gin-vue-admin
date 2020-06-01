@@ -1,15 +1,15 @@
 package config
 
 type Server struct {
-	Mysql   Mysql   `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
-	Sqlite  Sqlite  `mapstructure:"sqlite" json:"sqlite" yaml:"sqlite"`
-	Qiniu   Qiniu   `mapstructure:"qiniu" json:"qiniu" yaml:"qiniu"`
-	Casbin  Casbin  `mapstructure:"casbin" json:"casbin" yaml:"casbin"`
-	Redis   Redis   `mapstructure:"redis" json:"redis" yaml:"redis"`
-	System  System  `mapstructure:"system" json:"system" yaml:"system"`
-	JWT     JWT     `mapstructure:"jwt" json:"jwt" yaml:"jwt"`
-	Captcha Captcha `mapstructure:"captcha" json:"captcha" yaml:"captcha"`
-	Log     Log     `mapstructure:"log" json:"log" yaml:"log"`
+	Postgres Postgres `mapstructure:"postgres" json:"postgres" yaml:"postgres"`
+	Sqlite   Sqlite   `mapstructure:"sqlite" json:"sqlite" yaml:"sqlite"`
+	Qiniu    Qiniu    `mapstructure:"qiniu" json:"qiniu" yaml:"qiniu"`
+	Casbin   Casbin   `mapstructure:"casbin" json:"casbin" yaml:"casbin"`
+	Redis    Redis    `mapstructure:"redis" json:"redis" yaml:"redis"`
+	System   System   `mapstructure:"system" json:"system" yaml:"system"`
+	JWT      JWT      `mapstructure:"jwt" json:"jwt" yaml:"jwt"`
+	Captcha  Captcha  `mapstructure:"captcha" json:"captcha" yaml:"captcha"`
+	Log      Log      `mapstructure:"log" json:"log" yaml:"log"`
 }
 
 type System struct {
@@ -27,7 +27,7 @@ type Casbin struct {
 	ModelPath string `mapstructure:"model-path" json:"modelPath" yaml:"model-path"`
 }
 
-type Mysql struct {
+type Postgres struct {
 	Username     string `mapstructure:"username" json:"username" yaml:"username"`
 	Password     string `mapstructure:"password" json:"password" yaml:"password"`
 	Path         string `mapstructure:"path" json:"path" yaml:"path"`
@@ -46,8 +46,8 @@ type Redis struct {
 type Qiniu struct {
 	AccessKey string `mapstructure:"access-key" json:"accessKey" yaml:"access-key"`
 	SecretKey string `mapstructure:"secret-key" json:"secretKey" yaml:"secret-key"`
-	Bucket string `mapstructure:"bucket" json:"bucket" yaml:"bucket"`
-	ImgPath string `mapstructure:"img-path" json:"imgPath" yaml:"img-path"`
+	Bucket    string `mapstructure:"bucket" json:"bucket" yaml:"bucket"`
+	ImgPath   string `mapstructure:"img-path" json:"imgPath" yaml:"img-path"`
 }
 
 type Captcha struct {
