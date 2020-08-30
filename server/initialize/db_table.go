@@ -12,6 +12,7 @@ func DBTables() {
 		model.SysAuthority{},
 		model.SysApi{},
 		model.SysBaseMenu{},
+		model.SysBaseMenuParameter{},
 		model.JwtBlacklist{},
 		model.SysWorkflow{},
 		model.SysWorkflowStepInfo{},
@@ -20,6 +21,7 @@ func DBTables() {
 		model.ExaFileUploadAndDownload{},
 		model.ExaFile{},
 		model.ExaFileChunk{},
+		model.ExaSimpleUploader{},
 		model.ExaCustomer{},
 		model.SysOperationRecord{},
 	)

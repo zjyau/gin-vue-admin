@@ -13,9 +13,9 @@
 [English](./README.md) | 简体中文
 
 # 项目文档
-[在线文档](http://doc.henrongyi.top/)
+[在线文档](https://www.gin-vue-admin.com/)
 
-[开发教学](http://doc.henrongyi.top/help/) (贡献者:  <a href="https://github.com/LLemonGreen">LLemonGreen</a> And <a href="https://github.com/fkk0509">Fann</a>)
+[开发教学](https://www.gin-vue-admin.com/docs/help) (贡献者:  <a href="https://github.com/LLemonGreen">LLemonGreen</a> And <a href="https://github.com/fkk0509">Fann</a>)
 - 前端UI框架：[element-ui](https://github.com/ElemeFE/element) 
 - 后台框架：[gin](https://github.com/gin-gonic/gin) 
 
@@ -69,6 +69,41 @@ Gin-vue-admin 的成长离不开大家的支持，如果你愿意为 gin-vue-adm
 
 ## 2. 使用说明
 
+> 使用docker-compose体验本项目
+- 安装 docker-compose [官方文档](https://docs.docker.com/compose/install/)
+    - ```shell script
+       # 在Linux安装
+       # 1.1 运行此命令以下载Docker Compose的当前稳定版本
+       sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+       # 1.2 将可执行权限应用于二进制文件
+       sudo chmod +x /usr/local/bin/docker-compose 
+      ```
+    - ```shell script
+       # 使用Python的pip安装 
+       pip3 install docker-compose -i https://pypi.tuna.tsinghua.edu.cn/simple
+      ```
+    - 使用 Docker Desktop 
+        - Windows: https://hub.docker.com/editions/community/docker-ce-desktop-windows
+        - Mac: https://hub.docker.com/editions/community/docker-ce-desktop-mac/
+
+- 使用git克隆本项目
+    - ```git
+        git clone https://github.com/flipped-aurora/gin-vue-admin.git
+      ```
+- 使用docker-compose up一键启动启动项目
+    - ```shell script
+      # 使用docker-compose启动四个容器
+      docker-compose up
+      # 如果您修改了某些配置选项,可以使用此命令重新打包镜像
+      docker-compose up --build
+      # 使用docker-compose 后台启动
+      docker-compose up -d
+      ```
+
+    - web项目预览 [http://127.0.0.1:8888/admin](http://127.0.0.1:8888/admin)
+
+    - swagger文档 [http://127.0.0.1:8888/swagger/index.html](http://127.0.0.1:8888/swagger/index.html)
+
 ```
 - node版本 > v8.6.0
 - golang版本 >= v1.11
@@ -115,14 +150,18 @@ go get -u github.com/swaggo/swag/cmd/swag
 ````
 
 ##### （2）无法翻墙
-由于国内没法安装 go.org/x 包下面的东西，需要先安装`gopm`
+
+由于国内没法安装 go.org/x 包下面的东西，推荐使用 [goproxy.io](https://goproxy.io/zh/)
 
 ```bash
-# 下载gopm包
-go get -v -u github.com/gpmgo/gopm
+如果您使用的 Go 版本是 1.13 及以上(推荐)
+# 启用 Go Modules 功能
+go env -w GO111MODULE=on 
+# 配置 GOPROXY 环境变量
+go env -w GOPROXY=https://goproxy.io,direct
 
 # 执行
-gopm get -g -v github.com/swaggo/swag/cmd/swag
+go get -g -v github.com/swaggo/swag/cmd/swag
 
 # 到GOPATH的/src/github.com/swaggo/swag/cmd/swag路径下执行
 go install
@@ -239,24 +278,27 @@ swag init
 > https://space.bilibili.com/322210472/channel/detail?cid=108884
 
 ## 8. 联系方式
+
 ### 8.1 技术群
-| QQ群 |  
-|  :---:  |
-| <img src="http://qmplusimg.henrongyi.top/qq.jpg" width="180"/> |
 
 ### QQ交流群：622360840
-### 微信交流群：可以添加上面任意一位开发者，备注"加入gin-vue-admin交流群"
+| QQ 群(满) |
+|  :---:  |   
+| <img src="http://qmplusimg.henrongyi.top/qq.jpg" width="180"/> |
+
+### 微信交流群
+可以添加上面任意一位开发者，备注"加入gin-vue-admin交流群"
 
 ### 8.2 项目组成员
-| 蒋 | 尹 | 严 | 杜 | 印 | 宋 |
+| 蒋 | 严 | 尹 | 杜 | 印 | 宋 |
 |  :---:  |  :---: | :---: | :---:  |  :---: | :---: |
-| <img width="150" src="http://qmplusimg.henrongyi.top/qrjjz.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qryx.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qryr.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qrdjl.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qrygl.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qrsong.png"> |
+| <img width="150" src="http://qmplusimg.henrongyi.top/qrjjz.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qryr.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qryx.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qrdjl.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qrygl.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qrsong.png"> |
 
 |  昵称   | 项目职务  | 姓  |
 |  ----  | ----  | ----  |
 | [@piexlmax](https://github.com/piexlmax)  | 项目发起者 | 蒋 |
+| [@Ruio9244](https://github.com/Ruio9244)  | 架构师 | 严 |
 | [@granty1](https://github.com/granty1)  | 后台开发 | 印 |
-| [@Ruio9244](https://github.com/Ruio9244)  | 全栈开发 | 严 |
 | [@1319612909](https://github.com/1319612909)  | 前端UI开发 |  杜 |
 | [@krank666](https://github.com/krank666)  | 前端开发 | 尹 |
 | [@chen-chen-up](https://github.com/chen-chen-up)  | 新手开发 | 宋 |
@@ -264,7 +306,7 @@ swag init
 
 ## 9. 捐赠
 
-如果你觉得这个项目对你有帮助，你可以请作者喝饮料 :tropical_drink: [点我](http://doc.henrongyi.top/more/coffee.html)
+如果你觉得这个项目对你有帮助，你可以请作者喝饮料 :tropical_drink: [点我](https://www.gin-vue-admin.com/docs/coffee)
 
 ## 10. 商用注意事项
 

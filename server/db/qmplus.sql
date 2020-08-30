@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : qmplus
+ Source Server         : pandora
  Source Server Type    : MySQL
- Source Server Version : 50644
+ Source Server Version : 50640
  Source Host           : localhost:3306
  Source Schema         : qmplus
 
  Target Server Type    : MySQL
- Target Server Version : 50644
+ Target Server Version : 50640
  File Encoding         : 65001
 
- Date: 08/07/2020 10:08:22
+ Date: 15/08/2020 23:09:13
 */
 
 SET NAMES utf8mb4;
@@ -22,14 +22,14 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `casbin_rule`;
 CREATE TABLE `casbin_rule`  (
-  `p_type` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `v0` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `v1` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `v2` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `v3` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `v4` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `v5` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+  `p_type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
+  `v0` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
+  `v1` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
+  `v2` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
+  `v3` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
+  `v4` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
+  `v5` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin  ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of casbin_rule
@@ -176,6 +176,9 @@ INSERT INTO `casbin_rule` VALUES ('p', '888', '/sysOperationRecord/updateSysOper
 INSERT INTO `casbin_rule` VALUES ('p', '888', '/sysOperationRecord/findSysOperationRecord', 'GET', '', '', '');
 INSERT INTO `casbin_rule` VALUES ('p', '888', '/sysOperationRecord/getSysOperationRecordList', 'GET', '', '', '');
 INSERT INTO `casbin_rule` VALUES ('p', '888', '/sysOperationRecord/deleteSysOperationRecordByIds', 'DELETE', '', '', '');
+INSERT INTO `casbin_rule` VALUES ('p', '888', '/simpleUploader/upload', 'POST', '', '', '');
+INSERT INTO `casbin_rule` VALUES ('p', '888', '/simpleUploader/checkFileMd5', 'GET', '', '', '');
+INSERT INTO `casbin_rule` VALUES ('p', '888', '/simpleUploader/mergeFileMd5', 'GET', '', '', '');
 
 -- ----------------------------
 -- Table structure for exa_customers
@@ -187,12 +190,12 @@ CREATE TABLE `exa_customers`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   `customer_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '客户名',
-  `customer_phone_data` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '客户电话',
+  `customer_phone_data` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '客户电话',
   `sys_user_id` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '负责员工id',
-  `sys_user_authority_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '负责员工角色',
+  `sys_user_authority_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '负责员工角色',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_exa_customers_deleted_at`(`deleted_at`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin  ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of exa_customers
@@ -209,11 +212,11 @@ CREATE TABLE `exa_file_chunks`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   `exa_file_id` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '文件id',
-  `file_chunk_path` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '切片路径',
+  `file_chunk_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '切片路径',
   `file_chunk_number` int(11) NULL DEFAULT NULL COMMENT '切片标号',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_exa_file_chunks_deleted_at`(`deleted_at`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin  ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for exa_file_upload_and_downloads
@@ -224,14 +227,14 @@ CREATE TABLE `exa_file_upload_and_downloads`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '文件名',
-  `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '文件URL',
-  `tag` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '文件类型',
-  `key` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '标记',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '文件名',
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '文件URL',
+  `tag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '文件类型',
+  `key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '标记',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_file_upload_and_downloads_deleted_at`(`deleted_at`) USING BTREE,
   INDEX `idx_exa_file_upload_and_downloads_deleted_at`(`deleted_at`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin  ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of exa_file_upload_and_downloads
@@ -248,14 +251,30 @@ CREATE TABLE `exa_files`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
-  `file_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '文件名',
-  `file_md5` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '文件md5',
-  `file_path` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '文件路径',
+  `file_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '文件名',
+  `file_md5` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '文件md5',
+  `file_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '文件路径',
   `chunk_total` int(11) NULL DEFAULT NULL COMMENT '切片总数',
   `is_finish` tinyint(1) NULL DEFAULT NULL COMMENT '是否完整',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_exa_files_deleted_at`(`deleted_at`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin  ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for exa_simple_uploaders
+-- ----------------------------
+DROP TABLE IF EXISTS `exa_simple_uploaders`;
+CREATE TABLE `exa_simple_uploaders`  (
+  `chunk_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '当前切片标记',
+  `current_chunk_size` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '当前切片容量',
+  `current_chunk_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '切片本地路径',
+  `total_size` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '总容量',
+  `identifier` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '文件标识（md5）',
+  `filename` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '文件名',
+  `total_chunks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '切片总数',
+  `is_done` tinyint(1) NULL DEFAULT NULL COMMENT '是否上传完成',
+  `file_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '文件本地路径'
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin  ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for jwt_blacklists
@@ -266,10 +285,10 @@ CREATE TABLE `jwt_blacklists`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
-  `jwt` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT 'jwt',
+  `jwt` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL COMMENT 'jwt',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_jwt_blacklists_deleted_at`(`deleted_at`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin  ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for sys_apis
@@ -281,14 +300,14 @@ CREATE TABLE `sys_apis`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   `authority_id` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '角色id',
-  `path` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '路由path',
-  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '路由描述',
-  `api_group` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '路由分组',
-  `method` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'POST' COMMENT '请求方法',
+  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '路由path',
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '路由描述',
+  `api_group` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '路由分组',
+  `method` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT 'POST' COMMENT '请求方法',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_apis_deleted_at`(`deleted_at`) USING BTREE,
   INDEX `idx_sys_apis_deleted_at`(`deleted_at`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 106 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 103 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin  ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sys_apis
@@ -356,6 +375,9 @@ INSERT INTO `sys_apis` VALUES (96, '2020-07-05 14:34:20', '2020-07-05 14:34:20',
 INSERT INTO `sys_apis` VALUES (97, '2020-07-05 15:02:07', '2020-07-05 15:02:07', NULL, NULL, '/autoCode/getDB', '获取所有数据库', 'autoCode', 'GET');
 INSERT INTO `sys_apis` VALUES (98, '2020-07-05 16:32:08', '2020-07-05 16:32:08', NULL, NULL, '/autoCode/getColume', '获取所选table的所有字段', 'autoCode', 'GET');
 INSERT INTO `sys_apis` VALUES (99, '2020-07-07 15:59:53', '2020-07-07 15:59:53', NULL, NULL, '/sysOperationRecord/deleteSysOperationRecordByIds', '批量删除操作历史', 'sysOperationRecord', 'DELETE');
+INSERT INTO `sys_apis` VALUES (100, '2020-08-15 12:10:55', '2020-08-15 12:10:55', NULL, NULL, '/simpleUploader/upload', '插件版分片上传', 'simpleUploader', 'POST');
+INSERT INTO `sys_apis` VALUES (101, '2020-08-15 19:53:53', '2020-08-15 19:53:53', NULL, NULL, '/simpleUploader/checkFileMd5', '文件完整度验证', 'simpleUploader', 'GET');
+INSERT INTO `sys_apis` VALUES (102, '2020-08-15 22:28:04', '2020-08-15 22:28:04', NULL, NULL, '/simpleUploader/mergeFileMd5', '上传完成合并文件', 'simpleUploader', 'GET');
 
 -- ----------------------------
 -- Table structure for sys_authorities
@@ -363,15 +385,15 @@ INSERT INTO `sys_apis` VALUES (99, '2020-07-07 15:59:53', '2020-07-07 15:59:53',
 DROP TABLE IF EXISTS `sys_authorities`;
 CREATE TABLE `sys_authorities`  (
   `authority_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色id',
-  `authority_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '角色名',
-  `parent_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '父角色',
+  `authority_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '角色名',
+  `parent_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '父角色',
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`authority_id`) USING BTREE,
   UNIQUE INDEX `authority_id`(`authority_id`) USING BTREE,
   INDEX `idx_sys_authorities_deleted_at`(`deleted_at`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin  ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sys_authorities
@@ -417,6 +439,7 @@ INSERT INTO `sys_authority_menus` VALUES ('888', 42);
 INSERT INTO `sys_authority_menus` VALUES ('888', 50);
 INSERT INTO `sys_authority_menus` VALUES ('888', 51);
 INSERT INTO `sys_authority_menus` VALUES ('888', 52);
+INSERT INTO `sys_authority_menus` VALUES ('888', 53);
 INSERT INTO `sys_authority_menus` VALUES ('8881', 1);
 INSERT INTO `sys_authority_menus` VALUES ('8881', 2);
 INSERT INTO `sys_authority_menus` VALUES ('8881', 18);
@@ -446,6 +469,23 @@ INSERT INTO `sys_authority_menus` VALUES ('9528', 41);
 INSERT INTO `sys_authority_menus` VALUES ('9528', 42);
 
 -- ----------------------------
+-- Table structure for sys_base_menu_parameters
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_base_menu_parameters`;
+CREATE TABLE `sys_base_menu_parameters`  (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `created_at` datetime(0) NULL DEFAULT NULL,
+  `updated_at` datetime(0) NULL DEFAULT NULL,
+  `deleted_at` datetime(0) NULL DEFAULT NULL,
+  `sys_base_menu_id` int(10) UNSIGNED NULL DEFAULT NULL,
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
+  `key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
+  `value` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `idx_sys_base_menu_parameters_deleted_at`(`deleted_at`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin  ROW_FORMAT = Compact;
+
+-- ----------------------------
 -- Table structure for sys_base_menus
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_base_menus`;
@@ -456,26 +496,26 @@ CREATE TABLE `sys_base_menus`  (
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   `menu_level` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '菜单等级（暂未使用）',
   `parent_id` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '父菜单id',
-  `path` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '菜单path（路由path）',
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '菜单name（路由name）',
+  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '菜单path（路由path）',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '菜单name（路由name）',
   `hidden` tinyint(1) NULL DEFAULT NULL COMMENT '是否在列表隐藏',
-  `component` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '组件位置',
-  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '显示名字',
-  `icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '显示图标',
-  `nick_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '菜单别名',
+  `component` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '组件位置',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '显示名字',
+  `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '显示图标',
+  `nick_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '菜单别名',
   `sort` int(255) NULL DEFAULT NULL COMMENT '排序',
   `keep_alive` tinyint(1) NULL DEFAULT NULL COMMENT '是否缓存菜单内容',
   `default_menu` tinyint(1) NULL DEFAULT NULL COMMENT '默认菜单（暂未使用）',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_base_menus_deleted_at`(`deleted_at`) USING BTREE,
   INDEX `idx_sys_base_menus_deleted_at`(`deleted_at`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 54 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 54 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin  ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sys_base_menus
 -- ----------------------------
 INSERT INTO `sys_base_menus` VALUES (1, '2019-09-19 22:05:18', '2020-05-30 15:43:06', NULL, 0, 0, 'dashboard', 'dashboard', 0, 'view/dashboard/index.vue', '仪表盘', 'setting', '仪表盘', 1, 0, 0);
-INSERT INTO `sys_base_menus` VALUES (2, '2019-09-19 22:06:17', '2020-05-10 21:31:50', NULL, 0, 0, 'about', 'about', 0, 'view/about/index.vue', '关于我们', 'info', '测试菜单', 7, 0, 0);
+INSERT INTO `sys_base_menus` VALUES (2, '2019-09-19 22:06:17', '2020-08-11 23:26:21', NULL, 0, 0, 'about', 'about', 0, 'view/about/index.vue', '关于我们', 'info', '测试菜单', 7, 0, 0);
 INSERT INTO `sys_base_menus` VALUES (3, '2019-09-19 22:06:38', '2020-04-24 10:16:43', NULL, 0, 0, 'admin', 'superAdmin', 0, 'view/superAdmin/index.vue', '超级管理员', 'user-solid', '超级管理员', 3, 0, 0);
 INSERT INTO `sys_base_menus` VALUES (4, '2019-09-19 22:11:53', '2020-05-30 15:43:25', NULL, 0, 3, 'authority', 'authority', 0, 'view/superAdmin/authority/authority.vue', '角色管理', 's-custom', '角色管理', 1, 0, 0);
 INSERT INTO `sys_base_menus` VALUES (5, '2019-09-19 22:13:18', '2020-04-30 17:45:27', NULL, 0, 3, 'menu', 'menu', 0, 'view/superAdmin/menu/menu.vue', '菜单管理', 's-order', '菜单管理', 2, 1, 0);
@@ -498,6 +538,7 @@ INSERT INTO `sys_base_menus` VALUES (45, '2020-04-29 17:19:34', '2020-07-04 18:2
 INSERT INTO `sys_base_menus` VALUES (50, '2020-06-24 19:49:54', '2020-06-28 20:34:47', NULL, 0, 3, 'dictionary', 'dictionary', 0, 'view/superAdmin/dictionary/sysDictionary.vue', '字典管理', 'notebook-2', NULL, 5, 0, 0);
 INSERT INTO `sys_base_menus` VALUES (51, '2020-06-24 19:51:33', '2020-06-28 20:35:04', NULL, 0, 3, 'dictionaryDetail/:id', 'dictionaryDetail', 1, 'view/superAdmin/dictionary/sysDictionaryDetail.vue', '字典详情', 's-order', NULL, 1, 0, 0);
 INSERT INTO `sys_base_menus` VALUES (52, '2020-06-29 13:31:17', '2020-07-07 16:05:34', NULL, 0, 3, 'operation', 'operation', 0, 'view/superAdmin/operation/sysOperationRecord.vue', '操作历史', 'time', NULL, 6, 0, 0);
+INSERT INTO `sys_base_menus` VALUES (53, '2020-08-15 11:41:49', '2020-08-15 11:43:15', NULL, 0, 19, 'simpleUploader', 'simpleUploader', 0, 'view/example/simpleUploader/simpleUploader', '断点续传（插件版）', 'upload', NULL, 6, 0, 0);
 
 -- ----------------------------
 -- Table structure for sys_data_authority_id
@@ -535,13 +576,13 @@ CREATE TABLE `sys_dictionaries`  (
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典名（中）',
-  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字典名（英）',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '字典名（中）',
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '字典名（英）',
   `status` tinyint(1) NULL DEFAULT NULL COMMENT '状态',
-  `desc` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
+  `desc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '描述',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_sys_dictionaries_deleted_at`(`deleted_at`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin  ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sys_dictionaries
@@ -562,14 +603,14 @@ CREATE TABLE `sys_dictionary_details`  (
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
-  `label` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '展示值',
+  `label` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '展示值',
   `value` int(11) NULL DEFAULT NULL COMMENT '字典值',
   `status` tinyint(1) NULL DEFAULT NULL COMMENT '启用状态',
   `sort` int(11) NULL DEFAULT NULL COMMENT '排序标记',
   `sys_dictionary_id` int(11) NULL DEFAULT NULL COMMENT '关联标记',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_sys_dictionary_details_deleted_at`(`deleted_at`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 38 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 38 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin  ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sys_dictionary_details
@@ -614,12 +655,12 @@ CREATE TABLE `sys_operation_records`  (
   `latency` bigint(20) NULL DEFAULT NULL,
   `agent` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
   `error_message` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
-  `body` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL COMMENT '请求Body',
+  `body` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL COMMENT '请求Body',
   `user_id` int(11) NULL DEFAULT NULL COMMENT '用户id',
-  `resp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL COMMENT '响应Body',
+  `resp` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL COMMENT '响应Body',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_sys_operation_records_deleted_at`(`deleted_at`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 342 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 358 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for sys_users
@@ -631,15 +672,15 @@ CREATE TABLE `sys_users`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   `uuid` varbinary(255) NULL DEFAULT NULL COMMENT 'uuid',
-  `nick_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'QMPlusUser' COMMENT '用户昵称',
-  `header_img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'http://www.henrongyi.top/avatar/lufu.jpg' COMMENT '用户头像',
+  `nick_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT 'QMPlusUser' COMMENT '用户昵称',
+  `header_img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT 'http://www.henrongyi.top/avatar/lufu.jpg' COMMENT '用户头像',
   `authority_id` double NULL DEFAULT 888 COMMENT '用户角色',
-  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '登录用户名',
-  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '登录密码',
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '登录用户名',
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '登录密码',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_users_deleted_at`(`deleted_at`) USING BTREE,
   INDEX `idx_sys_users_deleted_at`(`deleted_at`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin  ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of sys_users
@@ -658,15 +699,15 @@ CREATE TABLE `sys_workflow_step_infos`  (
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   `workflow_id` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '节点id',
   `is_strat` tinyint(1) NULL DEFAULT NULL COMMENT '是否是开始节点',
-  `step_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '步骤name',
+  `step_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '步骤name',
   `step_no` double NULL DEFAULT NULL COMMENT '第几步',
-  `step_authority_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '可操作者角色',
+  `step_authority_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '可操作者角色',
   `is_end` tinyint(1) NULL DEFAULT NULL COMMENT '是否是结尾',
   `sys_workflow_id` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '关联工作流id',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_workflow_step_infos_deleted_at`(`deleted_at`) USING BTREE,
   INDEX `idx_sys_workflow_step_infos_deleted_at`(`deleted_at`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin  ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for sys_workflows
@@ -677,17 +718,17 @@ CREATE TABLE `sys_workflows`  (
   `created_at` datetime(0) NULL DEFAULT NULL,
   `updated_at` datetime(0) NULL DEFAULT NULL,
   `deleted_at` datetime(0) NULL DEFAULT NULL,
-  `workflow_nick_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '工作流中文名称',
-  `workflow_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '工作流英文名称',
-  `workflow_description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '工作流描述',
+  `workflow_nick_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '工作流中文名称',
+  `workflow_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '工作流英文名称',
+  `workflow_description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '工作流描述',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_sys_workflows_deleted_at`(`deleted_at`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin  ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- View structure for authority_menu
 -- ----------------------------
 DROP VIEW IF EXISTS `authority_menu`;
-CREATE ALGORITHM = UNDEFINED DEFINER = `root`@`localhost` SQL SECURITY DEFINER VIEW `authority_menu` AS select `sys_base_menus`.`id` AS `id`,`sys_base_menus`.`created_at` AS `created_at`,`sys_base_menus`.`updated_at` AS `updated_at`,`sys_base_menus`.`deleted_at` AS `deleted_at`,`sys_base_menus`.`menu_level` AS `menu_level`,`sys_base_menus`.`parent_id` AS `parent_id`,`sys_base_menus`.`path` AS `path`,`sys_base_menus`.`name` AS `name`,`sys_base_menus`.`hidden` AS `hidden`,`sys_base_menus`.`component` AS `component`,`sys_base_menus`.`title` AS `title`,`sys_base_menus`.`icon` AS `icon`,`sys_base_menus`.`nick_name` AS `nick_name`,`sys_base_menus`.`sort` AS `sort`,`sys_authority_menus`.`sys_authority_authority_id` AS `authority_id`,`sys_authority_menus`.`sys_base_menu_id` AS `menu_id`,`sys_base_menus`.`keep_alive` AS `keep_alive`,`sys_base_menus`.`default_menu` AS `default_menu` from (`sys_authority_menus` join `sys_base_menus` on((`sys_authority_menus`.`sys_base_menu_id` = `sys_base_menus`.`id`)));
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `authority_menu` AS select `sys_base_menus`.`id` AS `id`,`sys_base_menus`.`created_at` AS `created_at`,`sys_base_menus`.`updated_at` AS `updated_at`,`sys_base_menus`.`deleted_at` AS `deleted_at`,`sys_base_menus`.`menu_level` AS `menu_level`,`sys_base_menus`.`parent_id` AS `parent_id`,`sys_base_menus`.`path` AS `path`,`sys_base_menus`.`name` AS `name`,`sys_base_menus`.`hidden` AS `hidden`,`sys_base_menus`.`component` AS `component`,`sys_base_menus`.`title` AS `title`,`sys_base_menus`.`icon` AS `icon`,`sys_base_menus`.`nick_name` AS `nick_name`,`sys_base_menus`.`sort` AS `sort`,`sys_authority_menus`.`sys_authority_authority_id` AS `authority_id`,`sys_authority_menus`.`sys_base_menu_id` AS `menu_id`,`sys_base_menus`.`keep_alive` AS `keep_alive`,`sys_base_menus`.`default_menu` AS `default_menu` from (`sys_authority_menus` join `sys_base_menus` on((`sys_authority_menus`.`sys_base_menu_id` = `sys_base_menus`.`id`)));
 
 SET FOREIGN_KEY_CHECKS = 1;

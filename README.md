@@ -13,9 +13,9 @@
 English | [简体中文](./README-zh_CN.md)
 
 # Project Guidelines
-[Online Documentation](http://doc.henrongyi.top/)
+[Online Documentation](https://www.gin-vue-admin.com/)
 
-[Development Steps](http://doc.henrongyi.top/help/) (Contributor:  <a href="https://github.com/LLemonGreen">LLemonGreen</a> And <a href="https://github.com/fkk0509">Fann</a>)
+[Development Steps](https://www.gin-vue-admin.com/docs/help) (Contributor:  <a href="https://github.com/LLemonGreen">LLemonGreen</a> And <a href="https://github.com/fkk0509">Fann</a>)
 - Web UI Framework：[element-ui](https://github.com/ElemeFE/element)  
 - Server Framework：[gin](https://github.com/gin-gonic/gin) 
 
@@ -71,6 +71,42 @@ We are excited that you are interested in contributing to gin-vue-admin. Before 
 
 
 ## 2. Getting started
+
+> Use docker-compose to experience this project
+- Installation docker-compose [Official document](https://docs.docker.com/compose/install/)
+    - ```shell script
+       # Install on Linux
+       # 1.1 Run this command to download the current stable version of Docker Compose
+       sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+       # 1.2 Apply executable permissions to binary files
+       sudo chmod +x /usr/local/bin/docker-compose 
+      ```
+    - ```shell script
+       # Use Python's pip installation
+       pip3 install docker-compose -i https://pypi.tuna.tsinghua.edu.cn/simple
+      ```
+    - Use Docker Desktop 
+        - Windows: https://hub.docker.com/editions/community/docker-ce-desktop-windows
+        - Mac: https://hub.docker.com/editions/community/docker-ce-desktop-mac/
+
+- Use git to clone this project
+    - ```git
+        git clone https://github.com/flipped-aurora/gin-vue-admin.git
+      ```
+- Use docker-compose up to start the startup project with one click
+    - ```shell script
+      # Use docker-compose to start four containers
+      docker-compose up
+      # If you modify some configuration options, you can use this command to repackage the image
+      docker-compose up --build
+      # Use docker-compose to start in the background
+      docker-compose up -d
+      ```
+
+    - Web project preview [http://127.0.0.1:8888/admin](http://127.0.0.1:8888/admin)
+
+    - swagger APIs [http://127.0.0.1:8888/swagger/index.html](http://127.0.0.1:8888/swagger/index.html)
+
 ```
 - node version > v8.6.0
 - golang version >= v1.11
@@ -116,14 +152,23 @@ go build
 go get -u github.com/swaggo/swag/cmd/swag
 ````
 
-##### (2) In mainland China 
-In mainland China, access to go.org/x is prohibited，we recommend `gopm`
+##### (2) In mainland China
+ 
+In mainland China, access to go.org/x is prohibited，we recommend [goproxy.io](https://goproxy.io/zh/)
+
 ````bash
-# install gopm
-go get -v -u github.com/gpmgo/gopm
+
+If you are using Go version 1.13 and above (recommended)
+# Enable Go Modules function
+go env -w GO111MODULE=on 
+# Configure GOPROXY environment variables
+go env -w GOPROXY=https://goproxy.io,direct
+If you are using Go version 1.12 and below
+go env -w GO111MODULE=on
+go env -w GOPROXY=https://goproxy.io
 
 # get swag
-gopm get -g -v github.com/swaggo/swag/cmd/swag
+go get -g -v github.com/swaggo/swag/cmd/swag
 
 # cd GOPATH/src/github.com/swaggo/swag/cmd/swag
 go install
@@ -244,23 +289,25 @@ backend code file: model\dnModel\api.go
 
 ## 8. Contacts
 ### 8.1 Groups
-| QQ group |  
-|  :---:  |
-| <img src="http://qmplusimg.henrongyi.top/qq.jpg" width="180"/> |
-### QQ group: 622360840
+#### QQ group: 622360840
 
-### Wechat group: add anyone above, comment "加入gin-vue-admin交流群"
+| QQ group | 
+|  :---:  |  
+| <img src="http://qmplusimg.henrongyi.top/qq.jpg" width="180"/> |
+
+
+#### Wechat group: add anyone above, comment "加入gin-vue-admin交流群"
 
 ### 8.2 Team members
-| Jiang | Yin | Yan | Du | Yin | Song |
+| Jiang | Yan | Yin | Du | Yin | Song |
 |  :---:  |  :---: | :---: | :---:  |  :---: | :---: |
-| <img width="150" src="http://qmplusimg.henrongyi.top/qrjjz.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qryx.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qryr.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qrdjl.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qrygl.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qrsong.png"> |
+| <img width="150" src="http://qmplusimg.henrongyi.top/qrjjz.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qryr.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qryx.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qrdjl.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qrygl.png"> | <img width="150" src="http://qmplusimg.henrongyi.top/qrsong.png"> |
 
 |  Nick name   | Project position  | First name  |
 |  ----  | ----  | ----  |
 | [@piexlmax](https://github.com/piexlmax)  | Project sponsor | Jiang |
+| [@Ruio9244](https://github.com/Ruio9244)  | Architect | Yan |
 | [@granty1](https://github.com/granty1)  | Backend developer | Yin |
-| [@Ruio9244](https://github.com/Ruio9244)  | Full-stack developer | Yan |
 | [@1319612909](https://github.com/1319612909)  | UI developer |  Du |
 | [@krank666](https://github.com/krank666)  | Frontend developer | Yin |
 | [@chen-chen-up](https://github.com/chen-chen-up)  | Novice developer | Song |
@@ -268,7 +315,7 @@ backend code file: model\dnModel\api.go
 
 ## 9. Donate
 
-If you find this project useful, you can buy author a glass of juice :tropical_drink: [here](http://doc.henrongyi.top/more/coffee.html)
+If you find this project useful, you can buy author a glass of juice :tropical_drink: [here](https://www.gin-vue-admin.com/docs/coffee)
 
 ## 10. Commercial considerations
 
